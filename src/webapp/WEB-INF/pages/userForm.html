@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title th:text="${user.getId() == null ? 'Add New User' : 'Edit User'}"></title>
+  <a href="/users/users">Return to Users</a>
+</head>
+<body>
+
+<h1 th:text="${user.getId() == null ? 'Add New User' : 'Edit User'}"></h1>
+
+<form th:action="@{${user.getId() == null ? '/users/save' : '/users/update'}}" method="post">
+
+  <input type="hidden" name="id" th:value="${user.getId()}"/>
+
+  <label for="firstname">Firstname:</label>
+  <input type="text" id="firstname" name="firstName" th:value="${user.getFirstName()}" required/><br/>
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="Email" th:value="${user.getEmail()}" required/><br/>
+
+  <input type="submit" value="Save user"/>
+</form>
+
+</body>
+</html>
